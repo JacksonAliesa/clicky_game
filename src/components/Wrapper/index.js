@@ -5,6 +5,7 @@ const styles = {
     backgroundImage: `url("https://wallpaperaccess.com/full/808172.png")`,
     backgroundSize: "contain",
     justifyContent: "flex-end"
+ 
   }
 };
 
