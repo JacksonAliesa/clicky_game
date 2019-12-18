@@ -2,12 +2,15 @@ import React from 'react';
 import Header from './components/Header'
 import Characters from './components/Characters'
 import Wrapper from './components/Wrapper';
+
 import friend from "./friend.json";
+
 
 
 function App() {
   return (
     <Wrapper>
+      <Header> </Header>
       <Characters
         name={friend[0].name}
         image={friend[0].image}
@@ -15,10 +18,6 @@ function App() {
       <Characters
         name={friend[1].name}
         image={friend[1].image}
-      />
-      <Characters
-        name={friend[2].name}
-        image={friend[2].image}
       />
       <Characters
         name={friend[2].name}

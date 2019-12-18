@@ -1,12 +1,31 @@
 import React from "react";
 
+const styles = {
+  navbarStyle: {
+    backgroundColor: "black",
+    justifyContent: "flex-end",
+    height: "100px",
+    textAlign: "center",
+    opacity: 0.5
 
-function NavBar (props){
+
+  }
+};
+
+function Header (){
     return (
-        <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand mb-0 h1">Click On Each of the Thrones</span>
-      </nav>
+      <nav className="navbar" style={styles.navbarStyle}>
+  
+    <h1 style={{color: "yellow"}}>
+      Click On Each Character Without Clicking It Twice
+      Or Get Sent To The Wall
+     
+    </h1>
+
+
+  <h3 style={{color: "yellow"}}> Score:</h3>
+</nav>
       );
 }
 
-export default NavBar;
+export default Header;
