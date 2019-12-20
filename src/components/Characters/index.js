@@ -12,6 +12,7 @@ function GotCards(props) {
             </div>
           </div>
         </div>
+        
   );
 }
 

@@ -3,27 +3,33 @@ import React from "react";
 const styles = {
   navbarStyle: {
     backgroundColor: "black",
-    // justifyContent: "flex-end",
+    justifyContent: "center",
     height: "100px",
     textAlign: "center",
     opacity: 0.5
-
-
   }
 };
 
-function Header (){
-    return (
-      <nav className="navbar" style={styles.navbarStyle}>
-  
-    <h2 style={{color: "yellow"}}>
-      Click On Each Character Without Clicking It Twice
-      Or Get Sent To The Wall
-     
-    </h2>
+function Header(props) {
+  return (
+    <nav className="navbar" style={styles.navbarStyle}>
+      <div>
+        <h1 style={{ color: "yellow" }}>
+          *Try clicking on each character OR get sent to the wall*
+        </h1>
+        <h3 style={{ color: "yellow", justifyContent: "flex-end" }}>
+          <p className="border border-dark">Current Score: {props.score}</p>
+          {/* <p className="border border-dark">High Score: {props.jhighscore}</p> */}
 
-</nav>
-      );
+        </h3>
+      </div>
+
+
+
+
+
+    </nav>
+  );
 }
 
 export default Header;
