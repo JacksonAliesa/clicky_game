@@ -2,9 +2,8 @@ import React from 'react';
 import Header from './components/Header';
 import Characters from './components/Characters';
 import Wrapper from './components/Wrapper';
-import Score from "./components/Score"
+import Score from './components/Score';
 import friends from './friend.json';
-
 
 class App extends React.Component {
 	state = {
@@ -30,7 +29,7 @@ class App extends React.Component {
 	};
 
 	//on click function
-	countFriends = id => {
+	countFriends = (id) => {
 		this.randomImg();
 
 		//this is the new state we would update on click
@@ -67,36 +66,25 @@ class App extends React.Component {
 		}
 	};
 
-	// on-click function for cards
-
-	// handleClick = () => {
-	// 	console.log('this has been clicked');
-
-	// 	//call random img function
-	// 	// this.randomImg();
-	// 	this.countFriends();
-	// };
-
 	render() {
 		return (
 			<Wrapper>
 				<Header />
 				<div className="row">
-				<div className="border border-dark"><Score topscore={this.state.topscore} score={this.state.score} /></div>
+					<Score topscore={this.state.topscore} score={this.state.score} />
 				</div>
-					<div className="row">
-						{this.state.friends.map((friend) => (
-							<Characters
-							   onClick= {() => this.countFriends(friend.id)}
-								// handleClick={this.handleClick}
-								name={friend.name}
-								image={friend.image}
-								id={friend.id}
-								key={friend.id}
-							/>
-						))}
-					</div>
-			
+
+				<div className="row">
+					{this.state.friends.map((friend) => (
+						<Characters
+							onClick={() => this.countFriends(friend.id)}
+							name={friend.name}
+							image={friend.image}
+							id={friend.id}
+							key={friend.id}
+						/>
+					))}
+				</div>
 			</Wrapper>
 		);
 	}

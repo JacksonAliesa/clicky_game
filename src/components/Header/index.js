@@ -1,5 +1,4 @@
 import React from "react";
-import Score from "../Score";
 
 const styles = {
   navbarStyle: {
@@ -15,9 +14,11 @@ function Header() {
   return (
     <nav className="navbar" style={styles.navbarStyle}>
       <div>
-        <h1 style={{ color: "yellow" }}>
-          *Try clicking on each character OR get sent to the wall*
-        </h1>
+        <h1 style={{ color: "yellow" }}>Clicky Game: G.O.T. Edition</h1>
+        <h5 style={{ color: "yellow" }}>
+          Click each character once OR get sent to the wall
+        </h5>
+        
       </div>
     </nav>
   );
