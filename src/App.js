@@ -2,9 +2,9 @@ import React from 'react';
 import Header from './components/Header';
 import Characters from './components/Characters';
 import Wrapper from './components/Wrapper';
-
+import Score from "./components/Score"
 import friends from './friend.json';
-// import { render } from '@testing-library/react';
+
 
 class App extends React.Component {
 	state = {
@@ -81,7 +81,9 @@ class App extends React.Component {
 		return (
 			<Wrapper>
 				<Header />
-				<div className="container">
+				<div className="row">
+				<div className="border border-dark"><Score topscore={this.state.topscore} score={this.state.score} /></div>
+				</div>
 					<div className="row">
 						{this.state.friends.map((friend) => (
 							<Characters
@@ -94,7 +96,7 @@ class App extends React.Component {
 							/>
 						))}
 					</div>
-				</div>
+			
 			</Wrapper>
 		);
 	}

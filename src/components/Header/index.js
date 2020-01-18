@@ -11,24 +11,14 @@ const styles = {
   }
 };
 
-function Header(props) {
+function Header() {
   return (
     <nav className="navbar" style={styles.navbarStyle}>
       <div>
         <h1 style={{ color: "yellow" }}>
           *Try clicking on each character OR get sent to the wall*
         </h1>
-        <h3 style={{ color: "yellow", justifyContent: "flex-end" }}>
-          <div className="border border-dark">Current Score: <Score /></div>
-
-
-        </h3>
       </div>
-
-
-
-
-
     </nav>
   );
 }

@@ -1,9 +1,10 @@
 import React from "react";
+import "./style.css";
 
 
 function Score(props){
     return (
-        <div className="col-4 align-text-bottom">
+        <div className="col-4 align-text-bottom" id="scoreSection">
         <div>
             <h5>High Score: {props.highScore}</h5>
         </div>
