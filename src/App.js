@@ -9,54 +9,94 @@ import friends from './friend.json';
 class App extends React.Component {
 	state = {
 		friends,
-		//empty array 
-		id: [],
+		//empty array
+		clicks: [],
 		//counter to keep track of clicks
 		score: 0,
 		topscore: 0
 	};
 
-	// score & high score const{state I want to update } this state score & this state high score
-	//when card is clicked update the score state
-	// this is rereferring to the current class we are in ...read it like this app/state/
-	//pass function as 
-	//counter function
-
-	// randomized images function
-	randomImg = event => {
+	// randomized images function randomizes the imgs after one is clicked
+	randomImg = () => {
 		this.setState({
-			friends: this.state.friends.sort(() => Math.random() - 0.5)})
-	}
+			friends: this.state.friends.sort(() => Math.random() - 0.5)
+		});
+	};
 
+	//function to reset game after win or loss
+	resetGame = () => {
+		this.setState({ score: 0 });
+		this.setState({ clicks: [] });
+	};
+
+	//on click function
 	countFriends = id => {
 		this.randomImg();
-	  var { score } = this.state;
-	  var { topscore } = this.state;
-	  console.log(`ID:" ${id}`)
-	}
 
+		//this is the new state we would update on click
+		var { score } = this.state;
+		var { topscore } = this.state;
+		console.log(`"ID:" ${id}`);
 
-// on-click function for cards
+		//this looks to see if the ID is within the array of previously clicked characters
+		if (this.state.clicks.includes(id)) {
+			//if ID matches an ID within the array send alert
+			alert('Pack your bags! You are getting sent to the wall!');
+			//call the function to reset the game
+			this.resetGame();
+		} else {
+			//if ID is not in the array push it into the clicked characters array
+			this.state.clicks.push(id);
 
-handleClick = event => {
-	console.log("this has been clicked")
-	//call random img function
-	this.randomImg();
-	this.countFriends();
-}
+			//make a variable to track the score as it increases
+			let scoreKeeper = score + 1;
+			//set the score property to the scoreKeeper variable
+			this.setState({ score: scoreKeeper });
 
-render() {
-	return (
-		<Wrapper>
-			<Header />
-			<div className="container">
-				<div className="row">
-					{this.state.friends.map((friend) =>
-						<Characters handleClick={this.handleClick} name={friend.name} image={friend.image} id={friend.id}/>)}
+			//check highscore
+			var highestScore = topscore;
+
+			if (scoreKeeper > highestScore) {
+				this.setState({ topscore: scoreKeeper });
+				if (scoreKeeper === 12) {
+					//alert a win if it reaches 12
+					alert('Yay you won! You can stay in your kingdom!');
+					this.resetGame();
+				}
+			}
+		}
+	};
+
+	// on-click function for cards
+
+	// handleClick = () => {
+	// 	console.log('this has been clicked');
+
+	// 	//call random img function
+	// 	// this.randomImg();
+	// 	this.countFriends();
+	// };
+
+	render() {
+		return (
+			<Wrapper>
+				<Header />
+				<div className="container">
+					<div className="row">
+						{this.state.friends.map((friend) => (
+							<Characters
+							   onClick= {() => this.countFriends(friend.id)}
+								// handleClick={this.handleClick}
+								name={friend.name}
+								image={friend.image}
+								id={friend.id}
+								key={friend.id}
+							/>
+						))}
+					</div>
 				</div>
-			</div>
-		</Wrapper>
-	);
-}
+			</Wrapper>
+		);
+	}
 }
 export default App;

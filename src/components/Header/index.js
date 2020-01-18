@@ -1,4 +1,5 @@
 import React from "react";
+import Score from "../Score";
 
 const styles = {
   navbarStyle: {
@@ -18,8 +19,8 @@ function Header(props) {
           *Try clicking on each character OR get sent to the wall*
         </h1>
         <h3 style={{ color: "yellow", justifyContent: "flex-end" }}>
-          <p className="border border-dark">Current Score: {props.score}</p>
-          {/* <p className="border border-dark">High Score: {props.jhighscore}</p> */}
+          <div className="border border-dark">Current Score: <Score /></div>
+
 
         </h3>
       </div>
